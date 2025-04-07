@@ -1,95 +1,92 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client'
 
+import Experience from "@/component/Experience";
+import PriceComp from "@/component/PriceComp";
+import { RecoilRoot, useRecoilValue } from "recoil";
+
+import * as THREE from 'three'
+import { Canvas, useFrame, useThree } from '@react-three/fiber'
+
+import {useEnvironment, Environment , OrbitControls, Lightformer } from '@react-three/drei'
+import { EffectComposer, Bloom, N8AO, ToneMapping } from '@react-three/postprocessing'
+import { useEffect, useState, useRef } from "react";
+import Configurator from "@/component/Configurator";
+import ViewNavigation from "@/component/ViewNavigation";
+import gsap from "gsap";
+
+function CustomEnviroment() {
+  const env = useEnvironment({ files: 'https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/peppermint_powerplant_2_1k.hdr' })
+  return (<Environment map={env} background blur={1} />);
+}
+
+function ChangeCameraPositionTo(pos) {
+  const {camera} = useThree()
+  const animationRef = useRef(null)
+
+  if (animationRef.current) animationRef.current.kill()
+
+    // Create a proxy object for GSAP to animate
+    const proxy = {
+      x: camera.position.x,
+      y: camera.position.y,
+      z: camera.position.z
+    }
+    console.log({proxy, camera})
+
+    // Animate the proxy
+    animationRef.current = gsap.to(proxy, {
+      x: pos.x,
+      y: pos.y,
+      z: pos.z,
+      duration: 2,
+      ease: "power2.inOut",
+    })
+
+    useFrame(() => {
+      camera.position.set(proxy.x, proxy.y, proxy.z)
+      camera.updateProjectionMatrix()
+    })
+}
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.js</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+  
+
+  return (
+    <RecoilRoot>
+
+    
+    <div className="configurator_wrapper">
+    
+    {/* [5, 10, 15] */}
+    {/* [10, 7.5, 10] */}
+    {/* [10, 10, -10] */}
+    {/* [-10, 10, -10] */}
+   <Canvas style={{height:'100vh', width:'70vw', background:'white'}} shadows camera={{ position: [-10, 10, -10], fov: 30}}>
+      <spotLight position={[0, 15, 0]} angle={0.3} penumbra={1} castShadow intensity={2} shadow-bias={-0.0001} />
+      <ambientLight intensity={5} />
+      <Experience />
+      <OrbitControls enablePan={false} minPolarAngle={0} maxPolarAngle={Math.PI / 2.25} />
+      <EffectComposer>
+        <N8AO aoRadius={0.15} intensity={4} distanceFalloff={2} />
+        <Bloom luminanceThreshold={3.5} intensity={0.85} levels={9} mipmapBlur />
+        <ToneMapping />
+      </EffectComposer>
+
+      {/* <CustomEnviroment /> */}
+      {/* <ChangeCameraPositionTo pos={new THREE.Vector3([10, 7.5, 10])} /> */}
+      
+   </Canvas>
+   <Configurator />
+   </div>
+
+   <div className="bottom_nav">
+    <div className="btn poppins-bold add-to-cart">Add to cart</div>
+    <div className="btn poppins-bold buy-now">Buy Now</div>
+   </div>
+  <PriceComp />
+  {/* <ViewNavigation /> */}
+
+   </RecoilRoot>
+
   );
 }

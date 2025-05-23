@@ -80,8 +80,8 @@ export default function Home() {
    </div>
 
    <div className="bottom_nav">
-    <div className="btn poppins-bold add-to-cart">Add to cart</div>
-    <div className="btn poppins-bold buy-now">Buy Now</div>
+    <div className="btn poppins-bold add-to-cart" onClick={() => {alert('Product is added to cart!')}}>Add to cart</div>
+    <div className="btn poppins-bold buy-now" onClick={() => {alert('Thanks for purchasing from our shop!')}}>Buy Now</div>
    </div>
   <PriceComp />
   {/* <ViewNavigation /> */}

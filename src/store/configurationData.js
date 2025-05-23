@@ -103,11 +103,11 @@ export const configurationData = {
                 price: 1000
             },
             1 : {
-                ambient_occlusion: '/wood_texture2/ambientOcclusion.jpg',
-                base_color: '/wood_texture2/basecolor.jpg',
-                height: '/wood_texture2/height.jpg',
-                normal: '/wood_texture2/normal.jpg',
-                roughness: '/wood_texture2/roughness.jpg' ,
+                ambient_occlusion: '/wood_texture2/AmbientOcclusion.jpg',
+                base_color: '/wood_texture2/BaseColor.jpg',
+                height: '/wood_texture2/Height.jpg',
+                normal: '/wood_texture2/Normal.jpg',
+                roughness: '/wood_texture2/Roughness.jpg' ,
                 price: 1200
             }
         },
@@ -132,11 +132,11 @@ export const configurationData = {
             },
 
             2: {
-                ambient_occlusion: '/fabric_texture3/ambientOcclusion.jpg',
-                base_color: '/fabric_texture3/basecolor.jpg',
-                height: '/fabric_texture3/height.jpg',
-                normal: '/fabric_texture3/normal.jpg',
-                roughness: '/fabric_texture3/roughness.jpg' ,
+                ambient_occlusion: '/fabric_texture3/AmbientOcclusion.jpg',
+                base_color: '/fabric_texture3/BaseColor.jpg',
+                height: '/fabric_texture3/Height.jpg',
+                normal: '/fabric_texture3/Normal.jpg',
+                roughness: '/fabric_texture3/Roughness.jpg' ,
                 price: 700
             },
         }

@@ -32,13 +32,13 @@ export default function Configurator() {
             <div className={['c_t_nav_btn', (config2) ? 'active_c_t_nav_btn' : '' ].join(' ')} onClick={() => setConfig2(1)}>Chair</div>
           </div>
           <div className="texture_wrapper_table" style={{display:(!config2) ? 'block' : 'none'}}>
-            <div className={["c_texture_tab", (tableTextureAtom == 0) ? "active_c_config_tab" : ""].join(" ")} onClick={() => {setTableTextureAtom(0); setTotalPrice([TotalPrice[0], configurationData.texture.table[0].price, TotalPrice[1]])}}><div className="texture_img"><img src="/wood_texture1/BaseColor.jpg" height={'100%'} width={'100%'} /></div></div>
+            <div className={["c_texture_tab", (tableTextureAtom == 0) ? "active_c_config_tab" : ""].join(" ")} onClick={() => {setTableTextureAtom(0); setTotalPrice([TotalPrice[0], configurationData.texture.table[0].price, TotalPrice[1]])}}><div className="texture_img"><img src="/wood_texture1/basecolor.jpg" height={'100%'} width={'100%'} /></div></div>
             <div className={["c_texture_tab", (tableTextureAtom == 1) ? "active_c_config_tab" : ""].join(" ")} onClick={() => {setTableTextureAtom(1);  setTotalPrice([TotalPrice[0], configurationData.texture.table[1].price, TotalPrice[1]])}}><div className="texture_img"><img src="/wood_texture2/BaseColor.jpg" height={'100%'} width={'100%'} /></div></div>
           </div>
   
           <div className="texture_wrapper_chair" style={{display:(config2) ? 'block' : 'none'}}>
-            <div className={["c_texture_tab", (chairTextureAtom == 0) ? "active_c_config_tab" : ""].join(" ")} onClick={() => {setChairTextureAtom(0);setTotalPrice([TotalPrice[0], configurationData.texture.chair[0].price, TotalPrice[1]])}}><div className="texture_img"><img src="/fabric_texture1/BaseColor.png" height={'100%'} width={'100%'} /></div></div>
-            <div className={["c_texture_tab", (chairTextureAtom == 1) ? "active_c_config_tab" : ""].join(" ")} onClick={() => {setChairTextureAtom(1);setTotalPrice([TotalPrice[0], configurationData.texture.chair[1].price, TotalPrice[1]])}}><div className="texture_img"><img src="/fabric_texture2/BaseColor.jpg" height={'100%'} width={'100%'} /></div></div>
+            <div className={["c_texture_tab", (chairTextureAtom == 0) ? "active_c_config_tab" : ""].join(" ")} onClick={() => {setChairTextureAtom(0);setTotalPrice([TotalPrice[0], configurationData.texture.chair[0].price, TotalPrice[1]])}}><div className="texture_img"><img src="/fabric_texture1/basecolor.png" height={'100%'} width={'100%'} /></div></div>
+            <div className={["c_texture_tab", (chairTextureAtom == 1) ? "active_c_config_tab" : ""].join(" ")} onClick={() => {setChairTextureAtom(1);setTotalPrice([TotalPrice[0], configurationData.texture.chair[1].price, TotalPrice[1]])}}><div className="texture_img"><img src="/fabric_texture2/basecolor.jpg" height={'100%'} width={'100%'} /></div></div>
             <div className={["c_texture_tab", (chairTextureAtom == 2) ? "active_c_config_tab" : ""].join(" ")} onClick={() => {setChairTextureAtom(2);setTotalPrice([TotalPrice[0], configurationData.texture.chair[2].price, TotalPrice[1]])}}><div className="texture_img"><img src="/fabric_texture3/BaseColor.jpg" height={'100%'} width={'100%'} /></div></div>
           </div>
   

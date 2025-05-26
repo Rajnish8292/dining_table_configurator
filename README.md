@@ -2,6 +2,10 @@
 
 An interactive web-based 3D configurator that allows users to customize a dining table by choosing layout options and textures for table and chair. Built with **React Three Fiber** and **Next.js**, this project provides a seamless and intuitive experience for designing the perfect dining table setup.
 
+
+## Live on [https://dining-table-configurator-uhfm.vercel.app/](https://dining-table-configurator-uhfm.vercel.app/)
+
+
 ##  Features
 
 -  Real-time 3D table preview
@@ -16,6 +20,8 @@ An interactive web-based 3D configurator that allows users to customize a dining
 - [Three.js](https://threejs.org/)
 - [Drei](https://github.com/pmndrs/drei)
 - [Tailwind CSS](https://tailwindcss.com/)
+
+
 
 ##  Screenshots
 
